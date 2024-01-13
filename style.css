@@ -18,5 +18,13 @@ body {
   min-height: 100vh;
 }
 
+a {
+  color: white; 
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+a:hover { color: lightgreen; transition: 2s; }
+
 /* .component {} */
 

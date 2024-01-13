@@ -13,7 +13,11 @@ export const Header = () => {
             >Jogo Da Velha</Title>
             <Subtitle>Programado por Jonathas H. Pocidonio!</Subtitle>
             <div className={styles.iconContent}>
-                <Icon iconName="logo" link={'https://github.com/jonathashenrique7'} />
+                <img href='https://github.com/jonathashenrique7' src="/icons/logo.png" alt="github" width="30" height="30" /><br />
+
+                <a href='https://github.com/jonathashenrique7' target='_blank'>
+                    GitHub
+                </a>
             </div>
         </div>
     )
