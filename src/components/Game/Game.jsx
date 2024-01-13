@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react'
 // Estilos CSS
 import styles from './Game.module.css'
 // Componentes JSX
-import { Icon } from '../icons/Icons'
+import { GameInfo } from '../gameInfo/GameInfo'
 import { GameOption } from '../gameOption/GameOption'
+
 
 const winnerTable = [ // Sequências numéricas para finalizar o jogo 
     [0, 1, 2],
@@ -26,16 +27,20 @@ export const Game = () => {
             let newGameState = [...gameState] // Copiando os valores do gameState no Array -> Sem alterar o original 
             newGameState[locality] = currentPlayer
             setGameState(newGameState)
-            
         }
+    }
+
+    const handleReset = () => {
+        setGameState(Array(9).fill(0))
+        setWinner(0)
     }
 
     const verifyGame = () => {
         winnerTable.forEach(( element ) => {
             const values = element.map((value) => gameState[value])
             const sum = values.reduce((sum, value) => sum + value, 0) // Declare a constante no plural -> fn -> Singular
-            // console.log(sum)
-            if (sum === 3 || sum === -3) setWinner(sum / 3)
+            
+            if (sum === 3 || sum === -3) setWinner(sum / 3) 
         })
     }
 
@@ -43,8 +48,8 @@ export const Game = () => {
         setCurrentPlayer(currentPlayer * -1)
         verifyGame()
     }, [gameState]) // VIRTUAL DOM -> Quando o gameState for alterado, a função no useEffect será acionada 
-
-    return (
+    
+    return ( // Utiliza-se a função "onReset" no lugar de "onClick" -> "useState" na forma inicial 
         <div className={styles.gameContent}>
             <div className={styles.game}>
                 {
@@ -57,15 +62,7 @@ export const Game = () => {
                     )
                 }
             </div>
-            <div className={styles.gameInfo}>
-                <h4>Próximo jogador:</h4>
-                {
-                    currentPlayer === 1 && <Icon iconName="circle" />
-                }
-                {
-                    currentPlayer === -1 && <Icon iconName="x" />
-                }
-            </div>
+            <GameInfo currentPlayer={currentPlayer} winner={winner} onReset={handleReset} />
         </div>
     )
 }

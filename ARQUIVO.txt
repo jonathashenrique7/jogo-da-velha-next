@@ -1,6 +1,9 @@
 # Primeiro projeto Next.js -> jogo da velha 
 
-Easy    -> Growth 
+Easy  -> Growth 
 
-Medium  -> Aula: () => Responsividade
+Easy  -> Aula: () => Responsividade
+
+
+
 
