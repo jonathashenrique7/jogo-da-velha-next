@@ -50,7 +50,7 @@ export const Game = () => {
     }, [gameState]) // VIRTUAL DOM -> Quando o gameState for alterado, a função no useEffect será acionada 
     
     return ( // Utiliza-se a função "onReset" no lugar de "onClick" -> "useState" na forma inicial 
-        <div className={styles.gameContent}>
+        <div className={styles.gameContent}> 
             <div className={styles.game}>
                 {
                     gameState.map((value, locality) => 

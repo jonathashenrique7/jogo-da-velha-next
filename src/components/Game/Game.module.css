@@ -5,9 +5,17 @@
     gap: 12px;
 }
 
+/* Estiliza o Game.jsx e abarca outros componentes, tal como o GameInfo */
 .gameContent {
     display: flex;
     gap: 30px;
     align-items: center;
+}
+
+/* Responsividade -> Media queries */ 
+@media screen and (max-width: 425px) {
+    .gameContent {
+        flex-direction: column;
+    }
 }
 
