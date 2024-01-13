@@ -7,3 +7,6 @@
     margin: 20px 0;
 }
 
+.linkContent {
+    padding: calc(10px * 6.5);
+}

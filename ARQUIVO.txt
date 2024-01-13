@@ -1,0 +1,4 @@
+# Primeiro projeto Next.js -> jogo da velha 
+
+Easy -> A lógica do jogo 
+

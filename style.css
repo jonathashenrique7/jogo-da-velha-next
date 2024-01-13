@@ -5,8 +5,8 @@
 
 body {
   color: whitesmoke;
-  font-family: 'Roboto', sans-serif;
-  background-color: rgb(13, 13, 15);
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: rgb(2, 2, 20);
 }
 
 .container {
@@ -22,6 +22,7 @@ a {
   color: white; 
   text-transform: capitalize;
   text-decoration: none;
+  transition: 2s;
 }
 
 a:hover { color: lightgreen; transition: 2s; }
