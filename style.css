@@ -6,7 +6,8 @@
 body {
   color: whitesmoke;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  background-color: rgb(2, 2, 20);
+  background-color: rgb(3, 3, 39);
+  /* background-color: linear-gradient(45deg, #101b4b, #471944, #521f11, #4b4b4b); */
 }
 
 .container {
@@ -25,7 +26,7 @@ a {
   transition: 2s;
 }
 
-a:hover { color: lightgreen; transition: 2s; }
+a:hover { color: rgb(138, 230, 102); transition: 2s; }
 
 /* .component {} */
 

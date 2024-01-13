@@ -11,9 +11,9 @@ export const GamePage = () => {
     )
 }
 
-// [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ] 
+// Array -> useState -> [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ] 
 
-// Estado -> [ 0, 0, 0, 0, 0, 0, 0, 0 ]
+// Estado original -> [ 0, 0, 0, 0, 0, 0, 0, 0 ]
 
 // 0 -> Branco 
 // 1 -> Círculo 

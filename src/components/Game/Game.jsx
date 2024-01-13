@@ -1,23 +1,48 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 // Estilos CSS
 import styles from './Game.module.css'
 // Componentes JSX
 import { Icon } from '../icons/Icons'
 import { GameOption } from '../gameOption/GameOption'
 
-//
+const winnerTable = [ // Sequências numéricas para finalizar o jogo 
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+]
+
 export const Game = () => {
     const [gameState, setGameState]  = useState(Array(9).fill(0))
-    const [currentPlayer, setCurrentPlayer] = useState(1)
+    const [currentPlayer, setCurrentPlayer] = useState(-1)
+    const [winner, setWinner] = useState(0)
 
     const handleClick = (locality) => {
-        if ((gameState[locality]) === 0) {
+        if ((gameState[locality]) === 0 && winner === 0) {
             let newGameState = [...gameState] // Copiando os valores do gameState no Array -> Sem alterar o original 
             newGameState[locality] = currentPlayer
-            setCurrentPlayer(currentPlayer * -1)
             setGameState(newGameState)
+            
         }
     }
+
+    const verifyGame = () => {
+        winnerTable.forEach(( element ) => {
+            const values = element.map((value) => gameState[value])
+            const sum = values.reduce((sum, value) => sum + value, 0) // Declare a constante no plural -> fn -> Singular
+            // console.log(sum)
+            if (sum === 3 || sum === -3) setWinner(sum / 3)
+        })
+    }
+
+    useEffect(() => {
+        setCurrentPlayer(currentPlayer * -1)
+        verifyGame()
+    }, [gameState]) // VIRTUAL DOM -> Quando o gameState for alterado, a função no useEffect será acionada 
 
     return (
         <div className={styles.gameContent}>
