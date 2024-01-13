@@ -11,7 +11,7 @@ export const Header = () => {
             <Title 
                 className={styles.header}
             >Jogo Da Velha</Title>
-            <Subtitle>Lorem ipsum </Subtitle>
+            <Subtitle>Programado por Jonathas H. Pocidonio!</Subtitle>
             <div className={styles.iconContent}>
                 <Icon iconName="logo" link={'https://github.com/jonathashenrique7'} />
             </div>

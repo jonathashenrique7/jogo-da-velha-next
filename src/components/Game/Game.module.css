@@ -1,0 +1,6 @@
+.game {
+    /* O HTML sempre utiliza o máximo do espaço no layout */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 -> Por espaço! */
+    gap: 12px;
+}
