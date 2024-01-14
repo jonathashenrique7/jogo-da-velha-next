@@ -21,6 +21,7 @@ export const Game = () => {
     const [gameState, setGameState]  = useState(Array(9).fill(0))
     const [currentPlayer, setCurrentPlayer] = useState(-1)
     const [winner, setWinner] = useState(0)
+    const [draw, setDraw] = useState(false)
 
     const handleClick = (locality) => {
         if ((gameState[locality]) === 0 && winner === 0) {
@@ -30,9 +31,16 @@ export const Game = () => {
         }
     }
 
+    const verifyDraw = () => {
+        if (gameState.filter((value) => value === 0).length === 0 && winner === 0) {
+            setDraw(true)
+        }
+    }
+
     const handleReset = () => {
         setGameState(Array(9).fill(0))
         setWinner(0)
+        setDraw(false)
     }
 
     const verifyGame = () => {
@@ -47,8 +55,13 @@ export const Game = () => {
     useEffect(() => {
         setCurrentPlayer(currentPlayer * -1)
         verifyGame()
+        verifyDraw()
     }, [gameState]) // VIRTUAL DOM -> Quando o gameState for alterado, a função no useEffect será acionada 
     
+    useEffect(() => {
+        if (winner !== 0) setDraw(false)
+    }, [winner])
+
     return ( // Utiliza-se a função "onReset" no lugar de "onClick" -> "useState" na forma inicial 
         <div className={styles.gameContent}> 
             <div className={styles.game}>
@@ -58,11 +71,12 @@ export const Game = () => {
                             key={`game-option-position=${locality}`} 
                             status={value} 
                             onClick={() => handleClick(locality)} 
+                            isDraw={draw}
                         /> 
                     )
                 }
             </div>
-            <GameInfo currentPlayer={currentPlayer} winner={winner} onReset={handleReset} />
+            <GameInfo currentPlayer={currentPlayer} winner={winner} onReset={handleReset} isDraw={draw} />
         </div>
     )
 }

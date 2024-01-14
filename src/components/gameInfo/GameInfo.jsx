@@ -5,10 +5,11 @@ import { Icon } from '../icons/Icons'
 import { Button } from '../button/Button'
 
 //
-export const GameInfo = ({ currentPlayer, winner, onReset }) => {
+export const GameInfo = ({ currentPlayer, winner, onReset, isDraw }) => {
 
     const showEnableButton = () => {
         if (winner !== 0) return true
+        if (isDraw) return true
     }
 
     return (
