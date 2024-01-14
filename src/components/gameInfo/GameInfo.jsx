@@ -4,9 +4,9 @@ import styles from './Gameinfo.module.css'
 import { Icon } from '../icons/Icons'
 import { Button } from '../button/Button'
 
-//
-export const GameInfo = ({ currentPlayer, winner, onReset, isDraw }) => {
 
+export const GameInfo = ({ currentPlayer, winner, onReset, isDraw }) => {
+    
     const showEnableButton = () => {
         if (winner !== 0) return true
         if (isDraw) return true
@@ -15,7 +15,7 @@ export const GameInfo = ({ currentPlayer, winner, onReset, isDraw }) => {
     return (
         <div className={styles.gameInfo}>
             {
-                winner === 0 && 
+                !isDraw && winner === 0 && 
                 <>
                     <h4>Próximo jogador:</h4>
                     {
@@ -27,7 +27,7 @@ export const GameInfo = ({ currentPlayer, winner, onReset, isDraw }) => {
                 </>
             }
             {
-                winner !== 0 && 
+                !isDraw && winner !== 0 && 
                 <> 
                     <h4>Jogo finalizado! Campeão: </h4>
                     {
@@ -37,6 +37,9 @@ export const GameInfo = ({ currentPlayer, winner, onReset, isDraw }) => {
                         winner === -1 && <Icon iconName="x" />
                     }
                 </> 
+            }
+            {
+                isDraw && <h4>Jogo empatado! Reiniciar: </h4>
             }
             <Button
                 onClick={onReset}
