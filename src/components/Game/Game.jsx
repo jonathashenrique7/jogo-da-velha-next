@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 // Estilos CSS
 import styles from './Game.module.css'
 // Componentes JSX
+import { Score } from '../score/Score'
 import { GameInfo } from '../gameInfo/GameInfo'
 import { GameOption } from '../gameOption/GameOption'
 
@@ -63,20 +64,23 @@ export const Game = () => {
     }, [winner])
 
     return ( // Utiliza-se a função "onReset" no lugar de "onClick" -> "useState" na forma inicial 
-        <div className={styles.gameContent}> 
-            <div className={styles.game}>
-                {
-                    gameState.map((value, locality) => 
-                        <GameOption 
-                            key={`game-option-position=${locality}`} 
-                            status={value} 
-                            onClick={() => handleClick(locality)} 
-                            isDraw={draw}
-                        /> 
-                    )
-                }
+        <>
+            <div className={styles.gameContent}> 
+                <div className={styles.game}>
+                    {
+                        gameState.map((value, locality) => 
+                            <GameOption 
+                                key={`game-option-position=${locality}`} 
+                                status={value} 
+                                onClick={() => handleClick(locality)} 
+                                isDraw={draw}
+                            /> 
+                        )
+                    }
+                </div>
+                <GameInfo currentPlayer={currentPlayer} winner={winner} onReset={handleReset} isDraw={draw} />
             </div>
-            <GameInfo currentPlayer={currentPlayer} winner={winner} onReset={handleReset} isDraw={draw} />
-        </div>
+            <Score />
+        </>
     )
 }
