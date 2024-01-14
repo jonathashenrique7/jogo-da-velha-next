@@ -23,6 +23,8 @@ export const Game = () => {
     const [currentPlayer, setCurrentPlayer] = useState(-1)
     const [winner, setWinner] = useState(0)
     const [draw, setDraw] = useState(false)
+    const [xWinnerTimes, setXWinnerTimes] = useState(0)
+    const [circleWinnerTimes, setCircleWinnerTimes] = useState(0)
 
     const handleClick = (locality) => {
         if ((gameState[locality]) === 0 && winner === 0) {
@@ -49,7 +51,11 @@ export const Game = () => {
             const values = element.map((value) => gameState[value])
             const sum = values.reduce((sum, value) => sum + value, 0) // Declare a constante no plural -> fn -> Singular
             
-            if (sum === 3 || sum === -3) setWinner(sum / 3) 
+            if (sum === 3 || sum === -3) {
+                setWinner(sum / 3) 
+                // Lógica condicional ternária -> Código de tamanho reduzido 
+                sum > 0 ? setCircleWinnerTimes(circleWinnerTimes + 1) : setXWinnerTimes(xWinnerTimes + 1)
+            }
         })
     }
 
@@ -80,7 +86,11 @@ export const Game = () => {
                 </div>
                 <GameInfo currentPlayer={currentPlayer} winner={winner} onReset={handleReset} isDraw={draw} />
             </div>
-            <Score />
+
+            <Score 
+                xWinnerTimes={xWinnerTimes}
+                circleWinnerTimes={circleWinnerTimes}
+            />
         </>
     )
 }
